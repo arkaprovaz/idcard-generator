@@ -22,8 +22,8 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 # The ID and range of a sample spreadsheet.
 
 # ID of spreadsheet : https://docs.google.com/spreadsheets/d/<THIS-PART-IS-ID>/edit#gid=0
-SAMPLE_SPREADSHEET_ID = '1tnjNRDMcbPherAWI-pqDkRnhmcI9ClrBVfCHNokE9dg'
-SAMPLE_RANGE_NAME = 'A1:D'
+SAMPLE_SPREADSHEET_ID = '1fdFwRJYpw5C9AMK3CEfUpl28RxwT-IlCGrO_8DC40cY'
+SAMPLE_RANGE_NAME = 'B2:H17'
 
 
 def main():
@@ -64,12 +64,11 @@ def main():
     else:
         # We can access the sheet values here
         print("Data received.")
-
         for row in values:
-            name = row[0]
-            contact = row[1]
-            role = row[2]
-            imageUrl = row[3]
+            name = row[1]
+            contact = row[0]
+            sex = row[2]
+            imageUrl = row[6]
 
             print('Generating card for %s...' % (name))
 
@@ -83,7 +82,7 @@ def main():
             # QR Code factory
             # factory = qrcode.image.svg.SvgPathImage
 
-            data = '%s %s %s' % (name, contact, role)
+            data = '%s %s %s' % (name, contact, sex)
 
             qr.add_data(data)
             qr.make(fit=True)
@@ -102,7 +101,7 @@ def main():
 
             # Write the name
             draw = ImageDraw.Draw(template)
-            font = ImageFont.truetype('Product-Sans-Regular.ttf', 55)
+            font = ImageFont.truetype('GoogleSansDisplay-Regular-v1.27.ttf', 55)
 
             x, y = font.getsize(name)
 
@@ -124,7 +123,7 @@ def main():
             mask = mask.resize(profileImage.size, Image.ANTIALIAS)
             profileImage.putalpha(mask)
 
-            template.paste(profileImage, (175, 282), profileImage)
+            template.paste(profileImage, (195, 303), profileImage)
 
             # Add abstract element
             element = Image.open('element.png')
