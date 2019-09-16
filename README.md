@@ -41,3 +41,4 @@ Now simply run:
 
 - Code by Jay Mistry [@rossoskull](https://github.com/rossoskull)
 - Designs by Pranay Agarwal [pydesigns](https://www.behance.net/pydesigns)
+- Modified for GDG Siliguri by Arkaprova Deb [@arkaprovaz](https://www.github.com/arkaprovaz)
